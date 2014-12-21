@@ -119,6 +119,14 @@ public class Datahandler {
             chance=chance*sum;
         }
         gd.sannolikhet13 =utills.round(chance,6);
+        chance=100;
+        for(int i=0;i<gd.games.length;i++){
+            sum=0;
+            for(int j=0;j<gd.games.length;j++){
+                if(i==j)continue;
+                sum+=utills.getProb(gd.wvalue[i],gd.rad[j])
+            }
+        }
 
     }
 

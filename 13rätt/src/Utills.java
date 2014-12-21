@@ -36,5 +36,12 @@ public class Utills {
         for (int j=0;j<3;j++)if(!booleans[j])return j;
         return -1;
     }
+    public double getProb(double[] i, boolean[]b){
+        double res=0;
+        for (int j=0;j<3;j++){
+            if(b[j])res+=i[j];
+        }
+        return res;
+    }
 
 }
