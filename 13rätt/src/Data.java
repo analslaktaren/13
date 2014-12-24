@@ -68,14 +68,15 @@ public class Data {
              c=0;
             for (i = -1; (i = line.indexOf("\"odds\":{\"one\":\"", i + 1)) != -1; ) {
                 c++;
+                int inc=0;
                 if(c>n)break;
                 String o1=(line.substring(i+15,i+19)).replaceAll(",",".");
-                String o2=(line.substring(i+26,i+30)).replaceAll(",",".");
-                String o3=(line.substring(i+39,i+43)).replaceAll(",",".");
-                //System.out.println(o1+"|"+o2+"|"+o3);
-
                 gd.odds[c-1][0]=Double.parseDouble(o1);
+                if(gd.odds[c-1][0]>10.00)inc++;
+                String o2=(line.substring(i+26+inc,i+30+inc)).replaceAll(",",".");
                 gd.odds[c-1][1]=Double.parseDouble(o2);
+                if(gd.odds[c-1][1]>10.00)inc++;
+                String o3=(line.substring(i+39+inc,i+43+inc)).replaceAll(",",".");
                 gd.odds[c-1][2]=Double.parseDouble(o3);
                 gd.wodds[c-1]=utills.getwodds(gd.odds[c-1].clone());
 
@@ -85,11 +86,16 @@ public class Data {
             for (i = -1; (i = line.indexOf("svenskaFolket\":{\"one\":\"", i + 1)) != -1; ) {
                 c++;
                 if(c>n)break;
+                int inc=0;
                 String o1=(line.substring(i+23,i+25));
-                String o2=(line.substring(i+34,i+36));
-                String o3=(line.substring(i+47,i+49));
                 gd.crossed[c-1][0]=Double.parseDouble(o1);
+                if(gd.crossed[c-1][0]<10.00)inc--;
+                String o2=(line.substring(i+34+inc,i+36+inc));
                 gd.crossed[c-1][1]=Double.parseDouble(o2);
+                if(gd.crossed[c-1][1]<10.00)inc--;
+                String o3=(line.substring(i+47+inc,i+49+inc));
+
+
                 gd.crossed[c-1][2]=Double.parseDouble(o3);
             }
 

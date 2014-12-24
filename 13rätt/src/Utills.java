@@ -39,9 +39,12 @@ public class Utills {
     public double getProb(double[] i, boolean[]b){
         double res=0;
         for (int j=0;j<3;j++){
-            if(b[j])res+=i[j];
+            if(b[j])res+=1.00/i[j];
         }
         return res;
+    }
+    public double getNotProb(double[] i, boolean[]b){
+        return 1.00-getProb(i,b);
     }
 
 }

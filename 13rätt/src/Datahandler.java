@@ -115,19 +115,30 @@ public class Datahandler {
             for(int j=0;j<3;j++){
                 if(gd.rad[i][j])sum+=1.00/gd.wodds[i][j];
             }
-            System.out.println(utills.round(chance,6)+"    "+sum);
             chance=chance*sum;
         }
         gd.sannolikhet13 =utills.round(chance,6);
-        chance=100;
-        for(int i=0;i<gd.games.length;i++){
-            sum=0;
-            for(int j=0;j<gd.games.length;j++){
-                if(i==j)continue;
-                sum+=utills.getProb(gd.wvalue[i],gd.rad[j])
-            }
-        }
 
+
+        chance=100;
+        double csum=0;
+        for(int i=0;i<gd.games.length;i++){
+
+            for(int j=0;j<gd.games.length;j++){
+                sum=0;
+                if(i==j){
+                    sum+=utills.getNotProb(gd.wodds[j], gd.rad[j]);
+                }
+                else{
+                    sum+=utills.getProb(gd.wodds[j],gd.rad[j]);
+                }
+                System.out.println(sum);
+                chance=chance*sum;
+            }
+            csum+=chance;
+            chance=100;
+        }
+        gd.sannolikhet12 =utills.round(csum/(double)gd.games.length,6);
     }
 
 }
