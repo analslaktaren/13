@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by mq on 2014-12-20.
  */
@@ -6,6 +8,74 @@ public class Datahandler {
     public Datahandler(){
         utills=new Utills();
     }
+
+    public void calcRows(GameData gd){
+        for(int i=0;i<gd.games.length;i++){
+            for(int j=0;j<3;j++){
+                gd.wvalue[i][j]=gd.crossed[i][j]*(gd.wodds[i][j]);
+            }
+        }
+        if(gd.numMatch==13){
+            int counter=0;
+            for(int a=0;a<3;a++) for(int b=0;b<3;b++) for(int c=0;c<3;c++) for(int d=0;d<3;d++) for(int e=0;e<3;e++) for(int f=0;f<3;f++) for(int g=0;g<3;g++) for(int h=0;h<3;h++) for(int i=0;i<3;i++) for(int j=0;j<3;j++) for(int k=0;k<3;k++) for(int l=0;l<3;l++) for(int m=0;m<3;m++){
+                gd.rowVal[counter]=new MyPair();
+                gd.rowVal[counter].append(counter, gd.wvalue[0][a]+gd.wvalue[1][b]+gd.wvalue[2][c]+gd.wvalue[3][d]+gd.wvalue[4][e]+gd.wvalue[5][f]+gd.wvalue[6][g]+gd.wvalue[7][h]+gd.wvalue[8][i]+gd.wvalue[9][j]+gd.wvalue[10][k]+gd.wvalue[11][l]+gd.wvalue[12][m]);
+                counter++;
+            }
+            Arrays.sort(gd.rowVal);
+            System.out.println("Done sorting");
+        }
+        if(gd.numMatch==8){
+            int counter=0;
+            for(int a=0;a<3;a++) for(int b=0;b<3;b++) for(int c=0;c<3;c++) for(int d=0;d<3;d++) for(int e=0;e<3;e++) for(int f=0;f<3;f++) for(int g=0;g<3;g++) for(int h=0;h<3;h++) {
+                gd.rowVal[counter]=new MyPair();
+                gd.rowVal[counter].append(counter, gd.wvalue[0][a] + gd.wvalue[1][b] + gd.wvalue[2][c] + gd.wvalue[3][d] + gd.wvalue[4][e] + gd.wvalue[5][f] + gd.wvalue[6][g] + gd.wvalue[7][h]);
+                counter++;
+            }
+            Arrays.sort(gd.rowVal);
+            System.out.println("Done sorting");
+        }
+
+    }
+
+    private void setTecken(GameData gd, int antalrader){
+        StringBuilder SB=new StringBuilder();
+        if(gd.wvalue.length==13){
+            for(int i=0;i<antalrader;i++) {
+                int num = gd.rowVal[i].key();
+                int r = -1;
+
+                while (num!=0){
+                    r=num %3;
+                    SB.append(r);
+
+                    num=num/3;
+                }
+            }
+        }
+        else {
+            for(int i=0;i<antalrader;i++) {
+                int num = gd.rowVal[i].key();
+                int r = -1;
+
+                while (num!=0){
+                    r=num %3;
+
+                    SB.append(r);
+                    num=num/3;
+                }
+            }
+        }
+        System.out.println(SB.toString());
+    }
+
+
+    public void beast(String antalRaderS, GameData gd){
+        int antalRader=Integer.parseInt(antalRaderS);
+        calcRows(gd);
+        setTecken(gd,antalRader);
+    }
+
     public void go(GameData gd, String halv, String hel, int ws){
         System.out.println(halv+" "+hel+" "+ws);
         int ha=Integer.parseInt(halv);

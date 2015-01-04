@@ -9,6 +9,9 @@ public class GameData {
     public double[][] value;
     public double[][] wvalue;
     public boolean[][] rad;
+    public double[][] beastData;
+    public MyPair[] rowVal;
+    public int[][] tecken;
     public double sannolikhet13;
     public double sannolikhet12;
     public double sannolikhet11;
@@ -16,7 +19,14 @@ public class GameData {
     public double edge;
     public String spelstopp;
     public String omsättning;
+    public int numMatch;
     public GameData(int numMatches){
+        numMatch=numMatches;
+        int numRows;
+        if (numMatches==13)numRows=1594323;
+        else numRows=6561;
+        beastData=new double[numMatches][3];
+        rowVal =new MyPair[numRows];
         games=new String[numMatches];
         odds=new double[numMatches][3];
         crossed=new double[numMatches][3];
@@ -24,6 +34,7 @@ public class GameData {
         value=new double[numMatches][3];
         wvalue=new double[numMatches][3];
         rad=new boolean[numMatches][3];
+        tecken=new int[numMatches][3];
         spelstopp=new String("");
         omsättning=new String("");
         sannolikhet13 =-1;

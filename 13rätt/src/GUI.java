@@ -29,6 +29,7 @@ public class GUI extends JFrame{
         private JSlider slider;
         private JTextField halv;
         private JTextField hel;
+        private JTextField antr;
         public Datapanel(){
             setPreferredSize(new Dimension(panelWidth,panelHeight));
             setLayout(null);
@@ -89,18 +90,24 @@ public class GUI extends JFrame{
             hel =new JTextField("");
             hel.setBounds((int) ((double) panelWidth * 0.83), (int) ((double) panelHeight * 0.15), 30, 20);
             add(hel);
+            antr=new JTextField("");
+            antr.setBounds((int)((double)panelWidth*0.82),(int)((double)panelHeight * 0.67),60,20);
+            add(antr);
         }
 
         private void initlabels(){
             JLabel halvlabel=new JLabel("halv");
             JLabel hellabel=new JLabel("hel");
             JLabel slabel=new JLabel("vikta sannolikhet");
+            JLabel antalraderlabel=new JLabel("antal rader");
             halvlabel.setBounds((int) ((double) panelWidth * 0.77), (int) ((double) panelHeight * 0.11), 30, 20);
             hellabel.setBounds((int) ((double) panelWidth * 0.83), (int) ((double) panelHeight * 0.11), 30, 20);
             slabel.setBounds((int)((double)panelWidth*0.77),(int)((double)panelHeight * 0.21),150,20);
+            antalraderlabel.setBounds((int)((double)panelWidth*0.82),(int)((double)panelHeight * 0.63),150,20);
             add(halvlabel);
             add(hellabel);
             add(slabel);
+            add(antalraderlabel);
 
         }
 
@@ -111,10 +118,18 @@ public class GUI extends JFrame{
             goButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
-                    System.out.println("hej");
-                    System.out.println(halv.getText()+"  "+hel.getText()+"  "+slider.getValue());
                     datahandler.go(gamedata, halv.getText(), hel.getText(), slider.getValue());
                     repaint();
+                }
+            });
+
+            JButton beastButton=new JButton("Beast");
+            beastButton.setBounds((int)((double)panelWidth*0.82),(int)((double)panelHeight * 0.72),75,30);
+            add(beastButton);
+            beastButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    datahandler.beast(antr.getText(),gamedata);
                 }
             });
         }
