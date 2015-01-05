@@ -69,6 +69,10 @@ public class Datahandler {
         }
         gd.sannolikhet12=rowVal/(double)antalrader;
         gd.sannolikhet13=chance;
+        if(gd.wvalue.length==13)gd.sannolikhet11=gd.sannolikhet12/0.65;
+        if(gd.wvalue.length==8)gd.sannolikhet11=gd.sannolikhet12/0.70;
+        gd.sannolikhet10=antalrader*100.00/gd.sannolikhet11;
+
         for(int i=0;i<gd.wvalue.length;i++){
             for(int j=0;j<3;j++){
                 gd.dtecken[i][j]=(int)utills.round((double)(gd.tecken[i][j])*100/(double)antalrader,0);

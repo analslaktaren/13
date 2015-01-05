@@ -24,30 +24,30 @@
     <favorites_list name="13rätt" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49004975">
+    <splitter split-orientation="horizontal" split-proportion="0.6666667">
       <split-first>
         <leaf>
-          <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/GUI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="344" max-vertical-offset="3105">
-                  <caret line="82" column="11" selection-start-line="82" selection-start-column="11" selection-end-line="82" selection-end-column="11" />
+                <state vertical-scroll-proportion="0.5320262" vertical-offset="1123" max-vertical-offset="3240">
+                  <caret line="117" column="12" selection-start-line="117" selection-start-column="12" selection-end-line="117" selection-end-column="12" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#4271#4549#0" expanded="true" />
-                    <element signature="e#4548#4549#0" expanded="true" />
-                    <element signature="e#4786#5032#0" expanded="true" />
-                    <element signature="e#5031#5032#0" expanded="true" />
+                    <element signature="e#4559#4837#0" expanded="true" />
+                    <element signature="e#4836#4837#0" expanded="true" />
+                    <element signature="e#5074#5320#0" expanded="true" />
+                    <element signature="e#5319#5320#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Datahandler.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Datahandler.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Datahandler.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.74509805" vertical-offset="435" max-vertical-offset="3375">
-                  <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="3435">
+                  <caret line="73" column="60" selection-start-line="73" selection-start-column="60" selection-end-line="73" selection-end-column="60" />
                   <folding />
                 </state>
               </provider>
@@ -135,8 +135,8 @@
           <file leaf-file-name="MyPair.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/MyPair.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.44344473" vertical-offset="0" max-vertical-offset="778">
-                  <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+                <state vertical-scroll-proportion="0.15686275" vertical-offset="0" max-vertical-offset="765">
+                  <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
                   <folding>
                     <element signature="e#419#420#0" expanded="true" />
                     <element signature="e#476#477#0" expanded="true" />
@@ -158,8 +158,8 @@
         <option value="$PROJECT_DIR$/src/MyPair.java" />
         <option value="$PROJECT_DIR$/src/GameData.java" />
         <option value="$PROJECT_DIR$/src/Utills.java" />
-        <option value="$PROJECT_DIR$/src/GUI.java" />
         <option value="$PROJECT_DIR$/src/Datahandler.java" />
+        <option value="$PROJECT_DIR$/src/GUI.java" />
       </list>
     </option>
   </component>
@@ -479,7 +479,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13315363" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2734657" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2734657" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32897604" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -520,10 +520,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4271#4549#0" expanded="true" />
-            <element signature="e#4548#4549#0" expanded="true" />
-            <element signature="e#4786#5032#0" expanded="true" />
-            <element signature="e#5031#5032#0" expanded="true" />
+            <element signature="e#4559#4837#0" expanded="true" />
+            <element signature="e#4836#4837#0" expanded="true" />
+            <element signature="e#5074#5320#0" expanded="true" />
+            <element signature="e#5319#5320#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -595,10 +595,10 @@
           <caret line="108" column="18" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4271#4549#0" expanded="true" />
-            <element signature="e#4548#4549#0" expanded="true" />
-            <element signature="e#4786#5032#0" expanded="true" />
-            <element signature="e#5031#5032#0" expanded="true" />
+            <element signature="e#4559#4837#0" expanded="true" />
+            <element signature="e#4836#4837#0" expanded="true" />
+            <element signature="e#5074#5320#0" expanded="true" />
+            <element signature="e#5319#5320#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -662,10 +662,10 @@
           <caret line="108" column="18" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4271#4549#0" expanded="true" />
-            <element signature="e#4548#4549#0" expanded="true" />
-            <element signature="e#4786#5032#0" expanded="true" />
-            <element signature="e#5031#5032#0" expanded="true" />
+            <element signature="e#4559#4837#0" expanded="true" />
+            <element signature="e#4836#4837#0" expanded="true" />
+            <element signature="e#5074#5320#0" expanded="true" />
+            <element signature="e#5319#5320#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -729,10 +729,10 @@
           <caret line="108" column="18" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4271#4549#0" expanded="true" />
-            <element signature="e#4548#4549#0" expanded="true" />
-            <element signature="e#4786#5032#0" expanded="true" />
-            <element signature="e#5031#5032#0" expanded="true" />
+            <element signature="e#4559#4837#0" expanded="true" />
+            <element signature="e#4836#4837#0" expanded="true" />
+            <element signature="e#5074#5320#0" expanded="true" />
+            <element signature="e#5319#5320#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -796,10 +796,10 @@
           <caret line="108" column="18" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4271#4549#0" expanded="true" />
-            <element signature="e#4548#4549#0" expanded="true" />
-            <element signature="e#4786#5032#0" expanded="true" />
-            <element signature="e#5031#5032#0" expanded="true" />
+            <element signature="e#4559#4837#0" expanded="true" />
+            <element signature="e#4836#4837#0" expanded="true" />
+            <element signature="e#5074#5320#0" expanded="true" />
+            <element signature="e#5319#5320#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -892,17 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MyPair.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44344473" vertical-offset="0" max-vertical-offset="778">
-          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-          <folding>
-            <element signature="e#419#420#0" expanded="true" />
-            <element signature="e#476#477#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Utills.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
@@ -921,25 +910,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI.java">
+    <entry file="file://$PROJECT_DIR$/src/MyPair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="344" max-vertical-offset="3105">
-          <caret line="82" column="11" selection-start-line="82" selection-start-column="11" selection-end-line="82" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.15686275" vertical-offset="0" max-vertical-offset="765">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4271#4549#0" expanded="true" />
-            <element signature="e#4548#4549#0" expanded="true" />
-            <element signature="e#4786#5032#0" expanded="true" />
-            <element signature="e#5031#5032#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+            <element signature="e#476#477#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Datahandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74509805" vertical-offset="435" max-vertical-offset="3375">
-          <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="3435">
+          <caret line="73" column="60" selection-start-line="73" selection-start-column="60" selection-end-line="73" selection-end-column="60" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5320262" vertical-offset="1123" max-vertical-offset="3240">
+          <caret line="117" column="12" selection-start-line="117" selection-start-column="12" selection-end-line="117" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4559#4837#0" expanded="true" />
+            <element signature="e#4836#4837#0" expanded="true" />
+            <element signature="e#5074#5320#0" expanded="true" />
+            <element signature="e#5319#5320#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
