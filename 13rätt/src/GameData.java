@@ -12,6 +12,7 @@ public class GameData {
     public double[][] beastData;
     public MyPair[] rowVal;
     public int[][] tecken;
+    public int[][] dtecken;
     public double sannolikhet13;
     public double sannolikhet12;
     public double sannolikhet11;
@@ -35,6 +36,7 @@ public class GameData {
         wvalue=new double[numMatches][3];
         rad=new boolean[numMatches][3];
         tecken=new int[numMatches][3];
+        dtecken=new int[numMatches][3];
         spelstopp=new String("");
         omsättning=new String("");
         sannolikhet13 =-1;

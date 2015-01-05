@@ -23,7 +23,6 @@ public class Datahandler {
                 counter++;
             }
             Arrays.sort(gd.rowVal);
-            System.out.println("Done sorting");
         }
         if(gd.numMatch==8){
             int counter=0;
@@ -33,40 +32,48 @@ public class Datahandler {
                 counter++;
             }
             Arrays.sort(gd.rowVal);
-            System.out.println("Done sorting");
         }
 
     }
 
     private void setTecken(GameData gd, int antalrader){
-        StringBuilder SB=new StringBuilder();
-        if(gd.wvalue.length==13){
-            for(int i=0;i<antalrader;i++) {
+        gd.tecken=new int[gd.wvalue.length][3];
+        double chance=0;
+        double rowVal=0;
+        for(int i=0;i<antalrader;i++){
+            double rowchance=100;
+
+            StringBuilder SB=new StringBuilder();
                 int num = gd.rowVal[i].key();
                 int r = -1;
-
-                while (num!=0){
+                while (true){
                     r=num %3;
                     SB.append(r);
 
                     num=num/3;
+                    if(num==0)break;
                 }
+                for(int j=0;j<gd.wvalue.length;j++){
+                    int p = (int)Math.pow(3, j);
+                    System.out.println(p);
+                    if(gd.rowVal[i].key()<p)SB.append(0);
+                }
+            SB.reverse();
+            System.out.println(SB.toString()+"\n");
+            for(int j=0;j<gd.wvalue.length;j++){
+                gd.tecken[j][Character.getNumericValue(SB.charAt(j))]++;
+                rowchance=rowchance*1/gd.wodds[j][Character.getNumericValue(SB.charAt(j))];
+                rowVal+=gd.wvalue[j][Character.getNumericValue(SB.charAt(j))]/gd.wvalue.length;
+            }
+            chance+=rowchance;
+        }
+        gd.sannolikhet12=rowVal/(double)antalrader;
+        gd.sannolikhet13=chance;
+        for(int i=0;i<gd.wvalue.length;i++){
+            for(int j=0;j<3;j++){
+                gd.dtecken[i][j]=(int)utills.round((double)(gd.tecken[i][j])*100/(double)antalrader,0);
             }
         }
-        else {
-            for(int i=0;i<antalrader;i++) {
-                int num = gd.rowVal[i].key();
-                int r = -1;
-
-                while (num!=0){
-                    r=num %3;
-
-                    SB.append(r);
-                    num=num/3;
-                }
-            }
-        }
-        System.out.println(SB.toString());
     }
 
 

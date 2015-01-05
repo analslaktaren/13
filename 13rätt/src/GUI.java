@@ -80,16 +80,16 @@ public class GUI extends JFrame{
             slider=new JSlider();
             slider.setBounds((int)((double)panelWidth*0.77),(int)((double)panelHeight * 0.25),215,20);
             slider.setValue(0);
-            add(slider);
+         //   add(slider);
         }
 
         private void initTextbox(){
             halv =new JTextField("");
             halv.setBounds((int) ((double) panelWidth * 0.77), (int) ((double) panelHeight * 0.15), 30, 20);
-            add(halv);
+          //  add(halv);
             hel =new JTextField("");
             hel.setBounds((int) ((double) panelWidth * 0.83), (int) ((double) panelHeight * 0.15), 30, 20);
-            add(hel);
+          //  add(hel);
             antr=new JTextField("");
             antr.setBounds((int)((double)panelWidth*0.82),(int)((double)panelHeight * 0.67),60,20);
             add(antr);
@@ -104,9 +104,9 @@ public class GUI extends JFrame{
             hellabel.setBounds((int) ((double) panelWidth * 0.83), (int) ((double) panelHeight * 0.11), 30, 20);
             slabel.setBounds((int)((double)panelWidth*0.77),(int)((double)panelHeight * 0.21),150,20);
             antalraderlabel.setBounds((int)((double)panelWidth*0.82),(int)((double)panelHeight * 0.63),150,20);
-            add(halvlabel);
-            add(hellabel);
-            add(slabel);
+         //   add(halvlabel);
+         //   add(hellabel);
+         //   add(slabel);
             add(antalraderlabel);
 
         }
@@ -114,7 +114,7 @@ public class GUI extends JFrame{
         private void initButtons(){
             JButton goButton=new JButton("GO");
             goButton.setBounds((int)((double)panelWidth*0.77),(int)((double)panelHeight * 0.32),65,30);
-            add(goButton);
+            //add(goButton);
             goButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
@@ -130,6 +130,7 @@ public class GUI extends JFrame{
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
                     datahandler.beast(antr.getText(),gamedata);
+                    repaint();
                 }
             });
         }
@@ -196,6 +197,12 @@ public class GUI extends JFrame{
                 if(gamedata.rad[i][2])g.setColor(Color.black);
                 else g.setColor(Color.white);
                 g.fillRect((int) ((double) panelWidth * 0.724), (int) (((double) panelHeight * 0.035) + (i * (double) panelHeight / 18.0)), (int) ((double) panelWidth * 0.03), (int) (((double) panelHeight*0.050)));
+            }
+            g.setColor(Color.red);
+            for(int i=0;i<gamedata.games.length;i++){
+                g.drawString(String.valueOf(gamedata.dtecken[i][0]),(int) ((double) panelWidth * 0.66), (int) (((double) panelHeight * 0.070) + (i * (double) panelHeight / 18.0)));
+                g.drawString(String.valueOf(gamedata.dtecken[i][1]),(int) ((double) panelWidth * 0.6925), (int) (((double) panelHeight * 0.070) + (i * (double) panelHeight / 18.0)));
+                g.drawString(String.valueOf(gamedata.dtecken[i][2]),(int) ((double) panelWidth * 0.724), (int) (((double) panelHeight * 0.070) + (i * (double) panelHeight / 18.0)));
             }
             g.setColor(Color.black);
             g.drawString(String.valueOf(gamedata.sannolikhet13),(int)((double)panelWidth*0.77),(int)((double)panelHeight * 0.50));

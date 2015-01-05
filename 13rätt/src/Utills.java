@@ -2,6 +2,7 @@
  * Created by mq on 2014-12-20.
  */
 public class Utills {
+
     public double[] getwodds(double[] i){
         double c= 1.00/(1/i[0]+1.00/i[1]+1.00/i[2]);
         i[0]=round(i[0]/c,2);
