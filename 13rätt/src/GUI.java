@@ -28,7 +28,7 @@ public class GUI extends JFrame{
     }
 
     private class Datapanel extends JPanel{
-        Color bc= new Color(230,32,33);
+        Color bc= new Color(30,32,33);
         GameData gamedata;
         Datahandler datahandler;
         Data data;
@@ -85,9 +85,9 @@ public class GUI extends JFrame{
 
         private void initslider(){
             slider=new JSlider();
-            slider.setBounds((int)((double)panelWidth*0.77),(int)((double)panelHeight * 0.25),215,20);
+            slider.setBounds((int)((double)panelWidth*0.77),(int)((double)panelHeight * 0.80),215,20);
             slider.setValue(0);
-         //   add(slider);
+            add(slider);
         }
 
         private void initTextbox(){
@@ -137,7 +137,7 @@ public class GUI extends JFrame{
             beastButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
-                    datahandler.beast(antr.getText(),gamedata);
+                    datahandler.beast(antr.getText(),gamedata, slider.getValue());
                     repaint();
                 }
             });

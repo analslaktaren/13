@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.Arrays;
 
 /**
@@ -9,10 +10,10 @@ public class Datahandler {
         utills=new Utills();
     }
 
-    public void calcRows(GameData gd){
+    public void calcRows(GameData gd, int slider){
         for(int i=0;i<gd.games.length;i++){
             for(int j=0;j<3;j++){
-                gd.wvalue[i][j]=gd.crossed[i][j]*(gd.wodds[i][j]);
+                gd.wvalue[i][j]=gd.crossed[i][j]*(gd.wodds[i][j]-(double)slider/25.00);
             }
         }
         if(gd.numMatch==13){
@@ -40,50 +41,60 @@ public class Datahandler {
         gd.tecken=new int[gd.wvalue.length][3];
         double chance=0;
         double rowVal=0;
-        for(int i=0;i<antalrader;i++){
-            double rowchance=100;
+        try{
+            PrintWriter writer = new PrintWriter("o.txt", "UTF-8");
+            for(int i=0;i<antalrader;i++){
+                double rowchance=100;
 
-            StringBuilder SB=new StringBuilder();
+                StringBuilder SB=new StringBuilder();
                 int num = gd.rowVal[i].key();
                 int r = -1;
                 while (true){
                     r=num %3;
                     SB.append(r);
-
                     num=num/3;
                     if(num==0)break;
                 }
                 for(int j=0;j<gd.wvalue.length;j++){
                     int p = (int)Math.pow(3, j);
-                    System.out.println(p);
                     if(gd.rowVal[i].key()<p)SB.append(0);
                 }
-            SB.reverse();
-            System.out.println(SB.toString()+"\n");
-            for(int j=0;j<gd.wvalue.length;j++){
-                gd.tecken[j][Character.getNumericValue(SB.charAt(j))]++;
-                rowchance=rowchance*1/gd.wodds[j][Character.getNumericValue(SB.charAt(j))];
-                rowVal+=gd.wvalue[j][Character.getNumericValue(SB.charAt(j))]/gd.wvalue.length;
+                SB.reverse();
+                for(int j=0;j<gd.wvalue.length;j++){
+                    char c=SB.charAt(j);
+                    if(c=='0')writer.println('1');
+                    if(c=='1')writer.println('X');
+                    if(c=='2')writer.println('2');
+                }
+                writer.println("");
+                for(int j=0;j<gd.wvalue.length;j++){
+                    gd.tecken[j][Character.getNumericValue(SB.charAt(j))]++;
+                    rowchance=rowchance*1/gd.wodds[j][Character.getNumericValue(SB.charAt(j))];
+                    rowVal+=gd.wvalue[j][Character.getNumericValue(SB.charAt(j))]/gd.wvalue.length;
+                }
+                chance+=rowchance;
             }
-            chance+=rowchance;
-        }
-        gd.sannolikhet12=rowVal/(double)antalrader;
-        gd.sannolikhet13=chance;
-        if(gd.wvalue.length==13)gd.sannolikhet11=gd.sannolikhet12/0.65;
-        if(gd.wvalue.length==8)gd.sannolikhet11=gd.sannolikhet12/0.70;
-        gd.sannolikhet10=antalrader*100.00/gd.sannolikhet11;
+            gd.sannolikhet12=utills.round(rowVal / (double) antalrader, 2);
+            gd.sannolikhet13=  utills.round(chance,2);
+            if(gd.wvalue.length==13)gd.sannolikhet11=utills.round(gd.sannolikhet12/0.65,2);
+            if(gd.wvalue.length==8)gd.sannolikhet11=utills.round(gd.sannolikhet12/0.70,2);
+            gd.sannolikhet10=utills.round(antalrader*100.00/gd.sannolikhet11,2);
 
-        for(int i=0;i<gd.wvalue.length;i++){
-            for(int j=0;j<3;j++){
-                gd.dtecken[i][j]=(int)utills.round((double)(gd.tecken[i][j])*100/(double)antalrader,0);
+            for(int i=0;i<gd.wvalue.length;i++){
+                for(int j=0;j<3;j++){
+                    gd.dtecken[i][j]=(int)utills.round((double)(gd.tecken[i][j])*100/(double)antalrader,0);
+                }
             }
+            writer.close();
         }
+        catch (Exception e){}
+
     }
 
 
-    public void beast(String antalRaderS, GameData gd){
+    public void beast(String antalRaderS, GameData gd, int slider){
         int antalRader=Integer.parseInt(antalRaderS);
-        calcRows(gd);
+        calcRows(gd, slider);
         setTecken(gd,antalRader);
     }
 
