@@ -13,6 +13,7 @@ public class Datahandler {
     public void calcRows(GameData gd, int slider){
         for(int i=0;i<gd.games.length;i++){
             for(int j=0;j<3;j++){
+               // gd.value[i][j]=gd.crossed[i][j]*(gd.wodds[i][j]);
                 gd.wvalue[i][j]=gd.crossed[i][j]*(gd.wodds[i][j]-(double)slider/25.00);
             }
         }
@@ -66,17 +67,17 @@ public class Datahandler {
                     if(c=='1')writer.println('X');
                     if(c=='2')writer.println('2');
                 }
-                writer.println("");
+                //writer.println("");
                 for(int j=0;j<gd.wvalue.length;j++){
                     gd.tecken[j][Character.getNumericValue(SB.charAt(j))]++;
-                    rowchance=rowchance*1/gd.wodds[j][Character.getNumericValue(SB.charAt(j))];
-                    rowVal+=gd.wvalue[j][Character.getNumericValue(SB.charAt(j))]/gd.wvalue.length;
+                    rowchance=rowchance*1.00/gd.wodds[j][Character.getNumericValue(SB.charAt(j))];
+                    rowVal+=gd.value[j][Character.getNumericValue(SB.charAt(j))]/gd.value.length;
                 }
                 chance+=rowchance;
             }
             gd.sannolikhet12=utills.round(rowVal / (double) antalrader, 2);
             gd.sannolikhet13=  utills.round(chance,2);
-            if(gd.wvalue.length==13)gd.sannolikhet11=utills.round(gd.sannolikhet12/0.65,2);
+            if(gd.wvalue.length==13)gd.sannolikhet11=utills.round(gd.sannolikhet12/0.88,2);
             if(gd.wvalue.length==8)gd.sannolikhet11=utills.round(gd.sannolikhet12/0.70,2);
             gd.sannolikhet10=utills.round(antalrader*100.00/gd.sannolikhet11,2);
 

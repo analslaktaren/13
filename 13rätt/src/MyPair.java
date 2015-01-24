@@ -21,6 +21,8 @@ public class MyPair implements Comparable<MyPair>
 
     @Override
     public int compareTo(MyPair myPair) {
-        return (int)(this.value()-myPair.value());
+        if(this.value()>myPair.value())return 1;
+        if(this.value()<myPair.value())return -1;
+        return 0;
     }
 }

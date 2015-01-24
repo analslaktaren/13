@@ -1,3 +1,5 @@
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.InputStreamReader;
@@ -51,7 +53,7 @@ public class Data {
             while ((line = br.readLine()) != null)
             {
                 i++;
-                if(i==190)break;
+                if(i==206)break;
             }
             int c=0;
             for (i = -1; (i = line.indexOf("eventDescription\":\"", i + 1)) != -1; ) {
@@ -94,8 +96,6 @@ public class Data {
                 gd.crossed[c-1][1]=Double.parseDouble(o2);
                 if(gd.crossed[c-1][1]<10.00)inc--;
                 String o3=(line.substring(i+47+inc,i+49+inc));
-
-
                 gd.crossed[c-1][2]=Double.parseDouble(o3);
             }
 
