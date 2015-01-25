@@ -18,6 +18,7 @@ public class GameData {
     public double sannolikhet11;
     public double sannolikhet10;
     public double edge;
+    public double utdelning;
     public String spelstopp;
     public String omsättning;
     public int numMatch;

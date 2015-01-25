@@ -31,7 +31,7 @@ public class Data {
 
     private void genHtml(gameTypes type){
         String gameType;
-        if(type==gameTypes.STRYKTIPSET)gameType="stryktipset";
+        if(type==gameTypes.STRYKTIPSET){gameType="stryktipset";}
         else if(type==gameTypes.EUROPATIPSET)gameType="europatipset";
         else if(type==gameTypes.POWERPLAY)gameType="powerplay";
         else gameType="";
@@ -49,6 +49,9 @@ public class Data {
             BufferedReader br = new BufferedReader(new FileReader(gameType));
             String line = null;
             GameData gd=new GameData(n);
+            if(type==gameTypes.STRYKTIPSET)gd.utdelning=0.65;
+            if(type==gameTypes.EUROPATIPSET)gd.utdelning=0.65;
+            if(type==gameTypes.POWERPLAY)gd.utdelning=0.7;
             int i=0;
             while ((line = br.readLine()) != null)
             {
@@ -99,6 +102,16 @@ public class Data {
                 gd.crossed[c-1][2]=Double.parseDouble(o3);
             }
 
+            i=line.indexOf("\"currentNetSale\":\"");
+            StringBuilder OSB=new StringBuilder();
+            for(int j=18;j<30;j++){
+                if(line.charAt(i+j)=='\"')break;
+                OSB.append(line.charAt(i + j));
+            }
+            gd.omsättning=OSB.toString();
+
+
+
             for(i=0;i<n;i++){
                 gd.value[i][0]=utills.round(gd.crossed[i][0]*gd.wodds[i][0],2);
                 gd.value[i][1]=utills.round(gd.crossed[i][1]*gd.wodds[i][1],2);
@@ -107,8 +120,6 @@ public class Data {
             i = line.indexOf(", stänger ", i + 1);
             gd.spelstopp=line.substring(i+10,i+26);
 
-            i = line.indexOf(",\"currentNetSale\":\"", i + 1);
-            gd.omsättning=line.substring(i+17,i+25);
 
             if(type==gameTypes.STRYKTIPSET)Stryk=gd;
             if(type==gameTypes.EUROPATIPSET)EU=gd;

@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.io.File;
 
 /**
@@ -32,10 +33,12 @@ public class GUI extends JFrame{
         GameData gamedata;
         Datahandler datahandler;
         Data data;
+
         private JSlider slider;
         private JTextField halv;
         private JTextField hel;
         private JTextField antr;
+        JMenuBar menuBar;
         Image bgImage = Toolkit.getDefaultToolkit().createImage("bd.jpg");
         public Datapanel(){
             setPreferredSize(new Dimension(panelWidth,panelHeight));
@@ -43,8 +46,11 @@ public class GUI extends JFrame{
             setBackground(bc);
             data=new Data();
             datahandler=new Datahandler();
+            menuBar = new JMenuBar();
+            setJMenuBar(menuBar);
             setEU();
             initMenu();
+            settingsMenu();
             initslider();
             initTextbox();
             initlabels();
@@ -53,8 +59,6 @@ public class GUI extends JFrame{
         }
 
         private void initMenu(){
-            JMenuBar menuBar = new JMenuBar();
-            setJMenuBar(menuBar);
             JMenu fileMenu = new JMenu("Spel");
             menuBar.add(fileMenu);
             JMenuItem s = new JMenuItem("Stryktipset");
@@ -81,6 +85,45 @@ public class GUI extends JFrame{
                     setPP();
                 }
             });
+        }
+
+        private void settingsMenu(){
+            JMenu settings=new JMenu("Inställningar");
+            menuBar.add(settings);
+            JMenuItem utdelning=new JMenuItem("Utdelningar");
+            settings.add(utdelning);
+            utdelning.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    Utdelningar u=new Utdelningar();
+                }
+            });
+        }
+
+        public class Utdelningar extends JFrame {
+            public Utdelningar(){
+                setSize(150,110);
+                setLayout(null);
+                setVisible(true);
+                final JTextField jt=new JTextField(String.valueOf(gamedata.utdelning*100));
+                jt.setBounds(10, 40, 50, 30);
+                JButton btn=new JButton("ok");
+                btn.setBounds(65, 40, 55, 30);
+                btn.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent actionEvent) {
+                        gamedata.utdelning=Double.parseDouble(jt.getText())/100.00;
+                        setVisible(false);
+                        dispose();
+                    }
+                });
+                JLabel ulabel=new JLabel("Ändra utdelning");
+                ulabel.setBounds(10,5,150,30);
+                add(ulabel);
+                add(jt);
+                add(btn);
+                setVisible(true);
+            }
         }
 
         private void initslider(){
@@ -193,8 +236,8 @@ public class GUI extends JFrame{
                 g.drawString((String.valueOf(gamedata.value[i][0])+"   "+String.valueOf(gamedata.value[i][1])+"   "+String.valueOf(gamedata.value[i][2])), (int)((double)panelWidth*0.50), (int)(((double)panelHeight*0.065)+(i*(double)panelHeight/18.0)));
             }
 
-            g.drawString(gamedata.spelstopp,(int)((double)panelWidth*0.03),(int)((double)panelHeight*0.81));
-          //  g.drawString(gamedata.omsättning,(int)((double)panelWidth*0.03),(int)((double)panelHeight*0.90));
+            g.drawString("Spelstopp: "+gamedata.spelstopp,(int)((double)panelWidth*0.03),(int)((double)panelHeight*0.85));
+            g.drawString("Oms: "+gamedata.omsättning,(int)((double)panelWidth*0.23),(int)((double)panelHeight*0.85));
             g.setColor(Color.white);
             for(int i=0;i<gamedata.games.length;i++){
                 if(gamedata.rad[i][0])g.setColor(Color.black);

@@ -77,8 +77,7 @@ public class Datahandler {
             }
             gd.sannolikhet12=utills.round(rowVal / (double) antalrader, 2);
             gd.sannolikhet13=  utills.round(chance,2);
-            if(gd.wvalue.length==13)gd.sannolikhet11=utills.round(gd.sannolikhet12/0.88,2);
-            if(gd.wvalue.length==8)gd.sannolikhet11=utills.round(gd.sannolikhet12/0.70,2);
+            gd.sannolikhet11=utills.round(gd.sannolikhet12/gd.utdelning,2);
             gd.sannolikhet10=utills.round(antalrader*100.00/gd.sannolikhet11,2);
 
             for(int i=0;i<gd.wvalue.length;i++){
