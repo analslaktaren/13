@@ -39,7 +39,7 @@ public class GUI extends JFrame{
         private JTextField hel;
         private JTextField antr;
         JMenuBar menuBar;
-        Image bgImage = Toolkit.getDefaultToolkit().createImage("bd.jpg");
+        Image bgImage = Toolkit.getDefaultToolkit().createImage("bdd.jpg");
         public Datapanel(){
             setPreferredSize(new Dimension(panelWidth,panelHeight));
             setLayout(null);
@@ -163,17 +163,6 @@ public class GUI extends JFrame{
         }
 
         private void initButtons(){
-            JButton goButton=new JButton("GO");
-            goButton.setBounds((int)((double)panelWidth*0.77),(int)((double)panelHeight * 0.32),65,30);
-            //add(goButton);
-            goButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    datahandler.go(gamedata, halv.getText(), hel.getText(), slider.getValue());
-                    repaint();
-                }
-            });
-
             JButton beastButton=new JButton("Beast");
             beastButton.setBounds((int)((double)panelWidth*0.90),(int)((double)panelHeight * 0.72),75,30);
             add(beastButton);
@@ -237,7 +226,7 @@ public class GUI extends JFrame{
             }
 
             g.drawString("Spelstopp: "+gamedata.spelstopp,(int)((double)panelWidth*0.03),(int)((double)panelHeight*0.85));
-            g.drawString("Oms: "+gamedata.omsättning,(int)((double)panelWidth*0.23),(int)((double)panelHeight*0.85));
+            g.drawString("Oms: "+gamedata.omsättning,(int)((double)panelWidth*0.28),(int)((double)panelHeight*0.85));
             g.setColor(Color.white);
             for(int i=0;i<gamedata.games.length;i++){
                 if(gamedata.rad[i][0])g.setColor(Color.black);
@@ -257,10 +246,10 @@ public class GUI extends JFrame{
                 g.drawString(String.valueOf(gamedata.dtecken[i][2]),(int) ((double) panelWidth * 0.824), (int) (((double) panelHeight * 0.070) + (i * (double) panelHeight / 18.0)));
             }
             g.setColor(Color.white);
-            g.drawString(String.valueOf(gamedata.sannolikhet13),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.50));
-            g.drawString(String.valueOf(gamedata.sannolikhet12),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.55));
-            g.drawString(String.valueOf(gamedata.sannolikhet11),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.60));
-            g.drawString(String.valueOf(gamedata.sannolikhet10),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.65));
+            g.drawString(String.valueOf("13 chans: "+gamedata.sannolikhet13),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.50));
+            g.drawString(String.valueOf("Medel: "+gamedata.sannolikhet12),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.55));
+            g.drawString(String.valueOf("Medel/utd: "+gamedata.sannolikhet11),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.60));
+            g.drawString(String.valueOf("Värde: "+gamedata.sannolikhet10),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.65));
 
         }
 
