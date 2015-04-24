@@ -33,7 +33,7 @@ public class Data {
         String gameType;
         if(type==gameTypes.STRYKTIPSET){gameType="stryktipset";}
         else if(type==gameTypes.EUROPATIPSET)gameType="europatipset";
-        else if(type==gameTypes.POWERPLAY)gameType="powerplay";
+        else if(type==gameTypes.POWERPLAY)gameType="topptipset";
         else gameType="";
         try{
             Process pp = Runtime.getRuntime().exec("rm "+gameType);
@@ -56,7 +56,7 @@ public class Data {
             while ((line = br.readLine()) != null)
             {
                 i++;
-                if(i==206)break;
+                if(i==285)break;
             }
             int c=0;
             for (i = -1; (i = line.indexOf("eventDescription\":\"", i + 1)) != -1; ) {

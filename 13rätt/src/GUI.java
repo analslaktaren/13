@@ -33,7 +33,7 @@ public class GUI extends JFrame{
         GameData gamedata;
         Datahandler datahandler;
         Data data;
-
+        private JToggleButton tick;
         private JSlider slider;
         private JTextField halv;
         private JTextField hel;
@@ -163,16 +163,20 @@ public class GUI extends JFrame{
         }
 
         private void initButtons(){
+            tick=new JToggleButton("inv");
+            tick.setBounds((int)((double)panelWidth*0.90),(int)((double)panelHeight * 0.57),60,30);
+            add(tick);
             JButton beastButton=new JButton("Beast");
             beastButton.setBounds((int)((double)panelWidth*0.90),(int)((double)panelHeight * 0.72),75,30);
             add(beastButton);
             beastButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
-                    datahandler.beast(antr.getText(),gamedata, slider.getValue());
+                    datahandler.beast(antr.getText(),gamedata, slider.getValue(),tick.isSelected());
                     repaint();
                 }
             });
+
         }
 
 
@@ -246,10 +250,10 @@ public class GUI extends JFrame{
                 g.drawString(String.valueOf(gamedata.dtecken[i][2]),(int) ((double) panelWidth * 0.824), (int) (((double) panelHeight * 0.070) + (i * (double) panelHeight / 18.0)));
             }
             g.setColor(Color.white);
-            g.drawString(String.valueOf("13 chans: "+gamedata.sannolikhet13),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.50));
-            g.drawString(String.valueOf("Medel: "+gamedata.sannolikhet12),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.55));
-            g.drawString(String.valueOf("Medel/utd: "+gamedata.sannolikhet11),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.60));
-            g.drawString(String.valueOf("Värde: "+gamedata.sannolikhet10),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.65));
+            g.drawString(String.valueOf("Alla rätt: "+gamedata.sannolikhet13),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.50));
+            g.drawString(String.valueOf("Exp val: "+gamedata.sannolikhet12),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.55));
+          //  g.drawString(String.valueOf("Medel/utd: "+gamedata.sannolikhet11),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.60));
+           // g.drawString(String.valueOf("Värde: "+gamedata.sannolikhet10),(int)((double)panelWidth*0.87),(int)((double)panelHeight * 0.65));
 
         }
 

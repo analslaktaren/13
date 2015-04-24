@@ -10,18 +10,19 @@ public class Datahandler {
         utills=new Utills();
     }
 
-    public void calcRows(GameData gd, int slider){
+    public void calcRows(GameData gd, int slider,boolean inv){
         for(int i=0;i<gd.games.length;i++){
             for(int j=0;j<3;j++){
                // gd.value[i][j]=gd.crossed[i][j]*(gd.wodds[i][j]);
-                gd.wvalue[i][j]=gd.crossed[i][j]*(gd.wodds[i][j]-(double)slider/25.00);
+                gd.wvalue[i][j]=(gd.crossed[i][j]*(gd.wodds[i][j]-(slider/100.00))/100.00);
             }
         }
         if(gd.numMatch==13){
             int counter=0;
             for(int a=0;a<3;a++) for(int b=0;b<3;b++) for(int c=0;c<3;c++) for(int d=0;d<3;d++) for(int e=0;e<3;e++) for(int f=0;f<3;f++) for(int g=0;g<3;g++) for(int h=0;h<3;h++) for(int i=0;i<3;i++) for(int j=0;j<3;j++) for(int k=0;k<3;k++) for(int l=0;l<3;l++) for(int m=0;m<3;m++){
                 gd.rowVal[counter]=new MyPair();
-                gd.rowVal[counter].append(counter, gd.wvalue[0][a]+gd.wvalue[1][b]+gd.wvalue[2][c]+gd.wvalue[3][d]+gd.wvalue[4][e]+gd.wvalue[5][f]+gd.wvalue[6][g]+gd.wvalue[7][h]+gd.wvalue[8][i]+gd.wvalue[9][j]+gd.wvalue[10][k]+gd.wvalue[11][l]+gd.wvalue[12][m]);
+                if(inv)gd.rowVal[counter].append(counter,-1* gd.wvalue[0][a]*gd.wvalue[1][b]*gd.wvalue[2][c]*gd.wvalue[3][d]*gd.wvalue[4][e]*gd.wvalue[5][f]*gd.wvalue[6][g]*gd.wvalue[7][h]*gd.wvalue[8][i]*gd.wvalue[9][j]*gd.wvalue[10][k]*gd.wvalue[11][l]*gd.wvalue[12][m]);
+                else gd.rowVal[counter].append(counter, gd.wvalue[0][a] * gd.wvalue[1][b]*gd.wvalue[2][c]*gd.wvalue[3][d]*gd.wvalue[4][e]*gd.wvalue[5][f]*gd.wvalue[6][g]*gd.wvalue[7][h]*gd.wvalue[8][i]*gd.wvalue[9][j]*gd.wvalue[10][k]*gd.wvalue[11][l]*gd.wvalue[12][m]);
                 counter++;
             }
             Arrays.sort(gd.rowVal);
@@ -30,19 +31,34 @@ public class Datahandler {
             int counter=0;
             for(int a=0;a<3;a++) for(int b=0;b<3;b++) for(int c=0;c<3;c++) for(int d=0;d<3;d++) for(int e=0;e<3;e++) for(int f=0;f<3;f++) for(int g=0;g<3;g++) for(int h=0;h<3;h++) {
                 gd.rowVal[counter]=new MyPair();
-                gd.rowVal[counter].append(counter, gd.wvalue[0][a] + gd.wvalue[1][b] + gd.wvalue[2][c] + gd.wvalue[3][d] + gd.wvalue[4][e] + gd.wvalue[5][f] + gd.wvalue[6][g] + gd.wvalue[7][h]);
+                gd.rowVal[counter].append(counter, gd.wvalue[0][a] * gd.wvalue[1][b] * gd.wvalue[2][c] * gd.wvalue[3][d] * gd.wvalue[4][e] * gd.wvalue[5][f] * gd.wvalue[6][g] * gd.wvalue[7][h]);
                 counter++;
+
             }
             Arrays.sort(gd.rowVal);
         }
 
     }
 
+    private double get_val(GameData gd,String s){
+        double ch=1.0;
+        double numrows=1.0;
+        for(int j=0;j<gd.wvalue.length;j++){
+            int sign=s.charAt(j)-48;
+            ch=ch*(1.00/gd.wodds[j][sign]);
+            numrows=(numrows*gd.crossed[j][sign])/100;
+        }
+       // if (numrows<1.00/1000000)numrows=1.00/1000000;
+        return (1.00/numrows)*ch;
+    }
+
     private void setTecken(GameData gd, int antalrader){
+
         gd.tecken=new int[gd.wvalue.length][3];
         double chance=0;
         double rowVal=0;
         try{
+
             PrintWriter writer = new PrintWriter("o.txt", "UTF-8");
             writer.print("Stryktipset");
             writer.print("\r\n");
@@ -74,17 +90,21 @@ public class Datahandler {
                 }
                 writer.print("\r\n");
 
+                rowVal+=get_val(gd,SB.toString());
+
                 for(int j=0;j<gd.wvalue.length;j++){
                     gd.tecken[j][Character.getNumericValue(SB.charAt(j))]++;
                     rowchance=rowchance*1.00/gd.wodds[j][Character.getNumericValue(SB.charAt(j))];
-                    rowVal+=gd.value[j][Character.getNumericValue(SB.charAt(j))]/gd.value.length;
+
                 }
+
                 chance+=rowchance;
             }
-            gd.sannolikhet12=utills.round(rowVal / (double) antalrader, 2);
+
+            gd.sannolikhet12=utills.round(rowVal*gd.utdelning, 2);
             gd.sannolikhet13=  utills.round(chance,2);
-            gd.sannolikhet11=utills.round(gd.sannolikhet12/gd.utdelning,2);
-            gd.sannolikhet10=utills.round(antalrader*100.00/gd.sannolikhet11,2);
+         //   gd.sannolikhet11=utills.round(gd.sannolikhet12/gd.utdelning,2);
+           // gd.sannolikhet10=utills.round(antalrader*100.00/gd.sannolikhet11,2);
 
             for(int i=0;i<gd.wvalue.length;i++){
                 for(int j=0;j<3;j++){
@@ -93,14 +113,16 @@ public class Datahandler {
             }
             writer.close();
         }
-        catch (Exception e){}
+        catch (Exception e){
+            System.out.println(e);
+        }
 
     }
 
 
-    public void beast(String antalRaderS, GameData gd, int slider){
+    public void beast(String antalRaderS, GameData gd, int slider,boolean inv){
         int antalRader=Integer.parseInt(antalRaderS);
-        calcRows(gd, slider);
+        calcRows(gd, slider,inv);
         setTecken(gd,antalRader);
     }
 

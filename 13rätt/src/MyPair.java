@@ -17,7 +17,7 @@ public class MyPair implements Comparable<MyPair>
     }
 
     public int key()   { return key; }
-    public Double value() { return value; }
+    public double value() { return value; }
 
     @Override
     public int compareTo(MyPair myPair) {
