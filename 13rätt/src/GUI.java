@@ -204,6 +204,10 @@ public class GUI extends JFrame{
             super.paintComponent(g);
             g.drawImage(bgImage, 0, -10, null);
             g.setColor(Color.white);
+            if(gamedata==null){
+                System.out.println("NULL");
+                return;
+            }
             for(int i=0;i<gamedata.games.length;i++){
                 g.drawString(String.valueOf(i+1)+". ",(int)((double)panelWidth*0.01),(int)(((double)panelHeight*0.065)+(i*(double)panelHeight/18.0)));
             }
